@@ -27,11 +27,9 @@ export class LoginForm extends Component {
   }
 
 
-  handleSubmit(event){
+  handleSubmit = event => {
       console.log('Login request submitted');
-
       console.log(authController.signin(this.state.username, this.state.password));
-
       event.preventDefault();
   }
 

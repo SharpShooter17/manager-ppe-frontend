@@ -1,23 +1,20 @@
 import axios from 'axios';
 var querystring = require('querystring');
 
-export default class AbstractController {
-  constructor(_path){
-    this.apiUrl = 'http://localhost:8080/api';
-    this.path = _path;
-  }
+const apiUrl = 'http://localhost:9091/api';
 
-  create(){
-    return axios.create({
-      baseUrl: this.apiUrl + this.path,
-      headers: {
-        "content-Type":"application/json",
-        Accept:"application/json"
-      }
-    });
-  }
+const create = function(path){
+  return axios.create({
+    baseUrl: '${apiUrl}${this.path}',
+    headers: {
+      "content-Type":"application/json",
+      Accept:"application/json"
+    }
+  });
+}
 
-  post(action, data){
-    return axios.post(this.apiUrl + this.endpath + action, querystring.stringify(data));
-  }
+const post = function(path, action, data) {
+  return axios.post(apiUrl + path + action, data);
 };
+
+export default {create, post};

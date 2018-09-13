@@ -1,16 +1,10 @@
 import AbstractController from './AbstractController.js';
 
-class AuthController extends AbstractController {
-    constructor(){
-      super('/auth')
-    }
+const path = '/auth';
 
-    signin(_login, _password){
-      return super.post('/signin', {login:_login, password:_password});
-    }
+const signin = function(_login, _password) {
+  console.log('signin: login: ' + _login + ' password: ' + _password);
+  return AbstractController.post(path, '/signin', {login: _login, password: _password});
+}
 
-};
-
-const authController = new AuthController();
-
-export default {authController};
+export default {signin};
