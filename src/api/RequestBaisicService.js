@@ -5,21 +5,21 @@ import Cookies from 'js-cookie'
 
 const apiUrl = 'http://localhost:9091/api';
 
-const type =  'Bearer ';
+const type = 'Bearer ';
 
-const create = function(path){
-  return axios.create({
-    baseUrl: apiUrl+path,
-    headers: {
-      "content-Type":"application/json",
-      Accept:"application/json",
-      Authorization: type + Cookies.get('tokenType')
-    }
-  });
+const create = function (path) {
+    return axios.create({
+        baseUrl: apiUrl + path,
+        headers: {
+            "content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: type + Cookies.get('tokenType')
+        }
+    });
 }
 
-const post = function(path, action, data) {
-  return axios.post(apiUrl + path + action, data);
+const post = function (path, action, data) {
+    return axios.post(apiUrl + path + action, data);
 };
 
 export default {create, post};
