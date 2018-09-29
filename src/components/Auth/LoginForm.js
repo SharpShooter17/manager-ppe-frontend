@@ -17,7 +17,7 @@ export class LoginForm extends Component {
                 this.setState({
                     unauthorized: 'Bad password or e-mail'
                 });
-            })
+            });
         this.props.loggedSuccessfully();
     }
 

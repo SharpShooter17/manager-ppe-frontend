@@ -6,7 +6,9 @@ import {Switch, Route} from 'react-router-dom'
 import {Header} from './Header'
 import {Footer} from './Footer'
 import {Home} from './Home'
-import Address from "./Address/Address";
+import CreateNewClient from './Client/CreateClient'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class Root extends Component {
     render() {
@@ -21,7 +23,7 @@ export class Root extends Component {
                         <main>
                             <Switch>
                                 <Route exact path={'/'} component={Home}/>
-                                <Route path={'/address'} compeonent={Address}/>
+                                <Route exact path={'/client/createNewClient'} component={CreateNewClient}/>
                             </Switch>
                         </main>
                     </div>
@@ -30,7 +32,7 @@ export class Root extends Component {
                 <div className="row">
                     <Footer/>
                 </div>
-
+                <ToastContainer autoClose={8000} />
             </div>
         );
     }

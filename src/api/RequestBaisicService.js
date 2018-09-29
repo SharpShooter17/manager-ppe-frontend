@@ -5,21 +5,17 @@ import Cookies from 'js-cookie'
 
 const apiUrl = 'http://localhost:9091/api';
 
-const type = 'Bearer ';
-
 const create = function (path) {
+    const url = apiUrl + path;
     return axios.create({
-        baseUrl: apiUrl + path,
+        baseURL: url,
+        timeout: 3000,
         headers: {
             "content-Type": "application/json",
             Accept: "application/json",
-            Authorization: type + Cookies.get('tokenType')
+            Authorization: Cookies.get('tokenType') + ' ' + Cookies.get('token')
         }
     });
-}
-
-const post = function (path, action, data) {
-    return axios.post(apiUrl + path + action, data);
 };
 
-export default {create, post};
+export default {create};

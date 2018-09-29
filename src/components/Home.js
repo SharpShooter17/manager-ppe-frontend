@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {LoginForm} from './forms/LoginForm';
+import {LoginForm} from './Auth/LoginForm';
 import AuthService from '../api/AuthService';
 
 export class Home extends Component {

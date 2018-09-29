@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import Menu from './Address/Menu'
 import {Navbar, Nav} from 'react-bootstrap'
+import ClientMenu from './Client/Menu'
 
 export class Header extends Component {
     render() {
@@ -13,7 +13,7 @@ export class Header extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <Menu/>
+                    <ClientMenu/>
                 </Nav>
             </Navbar>
         );

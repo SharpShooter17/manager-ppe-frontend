@@ -2,11 +2,10 @@ import RequestBaisicService from './RequestBaisicService.js';
 import Cookies from 'js-cookie'
 
 const path = '/auth';
+const axios = RequestBaisicService.create(path);
 
 const signin = function (_login, _password) {
-    console.log('signin: login: ' + _login + ' password: ' + _password);
-
-    var result = RequestBaisicService.post(path, '/signin', {login: _login, password: _password})
+    var result = axios.post('/signin', {login: _login, password: _password})
         .then(response => {
             if (response.status === 200) {
                 Cookies.set('token', response.data.accessToken, {expiries: 1});
@@ -20,10 +19,10 @@ const signin = function (_login, _password) {
         });
 
     return result;
-}
+};
 
 const isLogged = function () {
     return Cookies.get('token') != null || Cookies.get('token') === "undefined";
-}
+};
 
 export default {signin, isLogged};
