@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import {Navbar, Nav} from 'react-bootstrap'
 import ClientMenu from './Client/Menu'
+import PpeMenu from './Ppe/Menu'
 
 export class Header extends Component {
     render() {
@@ -14,6 +15,7 @@ export class Header extends Component {
                 </Navbar.Header>
                 <Nav>
                     <ClientMenu/>
+                    <PpeMenu/>
                 </Nav>
             </Navbar>
         );

@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ClientFinder from './Client/Finder'
 import {Grid, Row, Col} from 'react-bootstrap'
 import Client from "./Client/Client";
+import CreatePpe from "./Ppe/Create";
 
 export class Root extends Component {
     render() {
@@ -25,9 +26,12 @@ export class Root extends Component {
                         <main>
                             <Switch>
                                 <Route exact path={'/'} component={Home}/>
-                                <Route path={'/client/createNewClient'} component={CreateNewClientForm}/>
+
+                                <Route path={'/client/create'} component={CreateNewClientForm}/>
                                 <Route path={'/client/find'} component={ClientFinder}/>
                                 <Route path={'/client/:code'} component={Client}/>
+
+                                <Route path={'/ppe/create'} component={CreatePpe}/>
                             </Switch>
                         </main>
                     </Col>

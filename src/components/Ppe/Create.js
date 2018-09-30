@@ -6,7 +6,7 @@ export default class Create extends Component {
         return (
             <Row>
                 <Col>
-
+                   
                 </Col>
             </Row>
         )
