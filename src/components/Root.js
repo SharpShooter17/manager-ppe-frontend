@@ -2,38 +2,42 @@
 
 import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom'
-
 import {Header} from './Header'
 import {Footer} from './Footer'
 import {Home} from './Home'
-import CreateNewClient from './Client/CreateClient'
-import { ToastContainer } from 'react-toastify';
+import CreateNewClientForm from './Client/CreateClientForm'
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ClientFinder from './Client/Finder'
+import {Grid, Row, Col} from 'react-bootstrap'
+import Client from "./Client/Client";
 
 export class Root extends Component {
     render() {
         return (
-            <div className="container">
-                <div className="row">
+            <Grid className="container App Site">
+                <Row>
                     <Header/>
-                </div>
+                </Row>
 
-                <div className="row">
-                    <div className="col">
+                <Row className="Site-content">
+                    <Col>
                         <main>
                             <Switch>
                                 <Route exact path={'/'} component={Home}/>
-                                <Route exact path={'/client/createNewClient'} component={CreateNewClient}/>
+                                <Route path={'/client/createNewClient'} component={CreateNewClientForm}/>
+                                <Route path={'/client/find'} component={ClientFinder}/>
+                                <Route path={'/client/:code'} component={Client}/>
                             </Switch>
                         </main>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
 
-                <div className="row">
+                <Row>
                     <Footer/>
-                </div>
-                <ToastContainer autoClose={8000} />
-            </div>
+                </Row>
+                <ToastContainer autoClose={8000}/>
+            </Grid>
         );
     }
 }

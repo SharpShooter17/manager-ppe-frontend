@@ -4,7 +4,7 @@ import ClientService from "../../api/ClientService";
 import {toast} from 'react-toastify';
 
 
-export default class CreateClient extends Component {
+export default class CreateClientForm extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit.bind(this);
@@ -16,13 +16,7 @@ export default class CreateClient extends Component {
                 toast.success("Dodano klienta");
             })
             .catch((error) => {
-            if (error.response){
-                toast.error("Błąd odpowiedzi: " + error.response.status);
-            } else if (error.request){
-                toast.error("Błąd zapytania: " + error.request);
-            } else {
                 toast.error("Błąd: " + error.message);
-            }
         });
     }
 

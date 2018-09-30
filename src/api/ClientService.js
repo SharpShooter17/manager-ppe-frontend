@@ -7,4 +7,12 @@ const createClient = function (_code, _name) {
     return axios.post('/create', {code: _code, name: _name});
 };
 
-export default {createClient}
+const getAll = function () {
+    return axios.get('/all');
+};
+
+const getByCode = function (_code) {
+    return axios.get('/' +_code);
+}
+
+export default {createClient, getAll, getByCode}
