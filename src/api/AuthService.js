@@ -12,8 +12,8 @@ const signin = function (_login, _password) {
                 Cookies.set('tokenType', response.data.tokenType, {expiries: 1});
                 return true;
             } else {
-                Cookies.set('token', null, {expiries: 1});
-                Cookies.set('tokenType', null, {expiries: 1});
+                Cookies.remove('token');
+                Cookies.remove('tokenType');
                 return false;
             }
         });
