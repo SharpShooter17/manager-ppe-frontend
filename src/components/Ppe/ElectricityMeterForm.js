@@ -5,88 +5,81 @@ import {Form, Text} from 'informed'
 import SelectClient from '../Client/SelectClient'
 import PpeService from '../../api/PpeService'
 import {toast} from "react-toastify";
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
+import ElectricityMeterService from "../../api/ElectricityMeterService";
 
 export default class ElectricityMeterForm extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            address: '',
-            client: ''
+            assembly: moment(),
+            deassembly: null
         };
 
         this.handleSubmit.bind(this);
-        this.handleChangeAddress.bind(this);
+        this.handleChangeAssembly.bind(this);
+        this.handleChangeDeassembly.bind(this);
     }
 
-    handleChangeAddress = (newValue) => {
+    handleChangeAssembly = (date) => {
         this.setState({
-            address: newValue.value
+            assembly: date
         });
     };
 
-    handleChangeClient = (newValue) => {
+    handleChangeDeassembly = (date) => {
         this.setState({
-            client: newValue.value
+            deassembly: date
         });
     };
 
     handleSubmit = (data) => {
-        PpeService.create(data.ppe, data.name, data.street, this.state.address, this.state.client).then((response) => {
-            toast.success("Dodano ppe");
-            document.getElementById("createPpe-form").reset();
-            this.setState({
-                address: '',
-                client: ''
-            });
+        ElectricityMeterService.create(data.number, this.state.assembly, this.state.deassembly, this.props.ppeId).then((response) => {
+            toast.success("Dodano licznik");
+            document.getElementById("createElectricityMeter-form").reset();
         }).catch((error) => {
             toast.error("Błąd: " + error.message);
         });
+        this.props.handle();
     };
 
     render() {
         return (
-            <Form id="createPpe-form" className="form-horizontal" onSubmit={data => this.handleSubmit(data)}>
+            <Form id="createElectricityMeter-form" className="form-horizontal" onSubmit={data => this.handleSubmit(data)}>
                 {({formApi}) => (
                     <Row>
                         <Row className="form-group">
-                            <label htmlFor="ppe" className="control-label col-xs-4">Numer PPE</label>
+                            <label htmlFor="ppe" className="control-label col-xs-4">Numer licznika</label>
                             <Col xs={8}>
-                                <Text id="ppe" name="ppe" field="ppe" type="text" required="required"
+                                <Text id="number" name="number" field="number" type="text" required="required"
                                       className="form-control"/>
                             </Col>
                         </Row>
                         <Row className="form-group">
-                            <label htmlFor="name" className="control-label col-xs-4">Imię i nazwisko lub nazwa
-                                firmy</label>
+                            <label htmlFor="name" className="control-label col-xs-4">Data montażu</label>
                             <Col xs={8}>
-                                <Text id="name" name="name" field="name" required="required" type="text"
-                                      className="form-control"/>
+                                <DatePicker
+                                    dateFormat={'YYYY-MM-DD'}
+                                    selected={this.state.assembly}
+                                    onChange={this.handleChangeAssembly}
+                                />
                             </Col>
                         </Row>
                         <Row className="form-group">
-                            <label htmlFor="street" className="control-label col-xs-4">Ulica i numer</label>
+                            <label htmlFor="street" className="control-label col-xs-4">Data demontażu</label>
                             <Col xs={8}>
-                                <Text field="street" id="street" name="street" type="text" className="form-control"/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="postAddress" className="control-label col-xs-4">Kod pocztowy</label>
-                            <Col xs={8}>
-                                <SelectPostAddress name="postAddress" id="postAddress"
-                                                   handleChange={this.handleChangeAddress}/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="client" className="control-label col-xs-4">Klient</label>
-                            <Col xs={8}>
-                                <SelectClient name="client" id="client" handleChange={this.handleChangeClient}/>
+                                <DatePicker
+                                    dateFormat={'YYYY-MM-DD'}
+                                    selected={this.state.deassembly}
+                                    onChange={this.handleChangeDeassembly}
+                                />
                             </Col>
                         </Row>
                         <Row className="form-group">
                             <Col xsOffset={4} xs={8}>
-                                <button name="submit" type="submit" className="btn btn-primary">Stwórz ppe</button>
+                                <button name="submit" type="submit" className="btn btn-primary">Dodaj licznik do PPE</button>
                             </Col>
                         </Row>
                     </Row>

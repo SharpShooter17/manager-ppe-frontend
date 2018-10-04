@@ -14,6 +14,7 @@ import Client from "./Client/Client";
 import CreatePpe from "./Ppe/Create";
 import Ppe from './Ppe/Ppe'
 import PpeFinder from './Ppe/Finder'
+import 'react-datepicker/dist/react-datepicker.css';
 
 export class Root extends Component {
     render() {
