@@ -12,16 +12,18 @@ import ClientFinder from './Client/Finder'
 import {Grid, Row, Col} from 'react-bootstrap'
 import Client from "./Client/Client";
 import CreatePpe from "./Ppe/Create";
+import Ppe from './Ppe/Ppe'
+import PpeFinder from './Ppe/Finder'
 
 export class Root extends Component {
     render() {
         return (
-            <Grid className="container App Site">
+            <Grid className="container">
                 <Row>
                     <Header/>
                 </Row>
 
-                <Row className="Site-content">
+                <Row>
                     <Col>
                         <main>
                             <Switch>
@@ -32,6 +34,8 @@ export class Root extends Component {
                                 <Route path={'/client/:code'} component={Client}/>
 
                                 <Route path={'/ppe/create'} component={CreatePpe}/>
+                                <Route path={'/ppe/find'} component={PpeFinder} />
+                                <Route path={'/ppe/:physicalId'} component={Ppe} />
                             </Switch>
                         </main>
                     </Col>

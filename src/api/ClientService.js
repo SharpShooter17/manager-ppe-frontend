@@ -13,10 +13,10 @@ const getAll = function () {
 
 const getClientByNameLike = function (_name) {
     return axios.get('/byNameLike/' + _name);
-}
+};
 
 const getByCode = function (_code) {
     return axios.get('/' +_code);
-}
+};
 
 export default {createClient, getAll, getByCode, getClientByNameLike}

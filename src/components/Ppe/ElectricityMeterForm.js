@@ -6,7 +6,7 @@ import SelectClient from '../Client/SelectClient'
 import PpeService from '../../api/PpeService'
 import {toast} from "react-toastify";
 
-export default class Create extends Component {
+export default class ElectricityMeterForm extends Component {
 
     constructor(props) {
         super(props);

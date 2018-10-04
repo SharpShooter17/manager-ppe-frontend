@@ -39,7 +39,6 @@ export default class SelectClient extends Component {
         return (
             <AsyncSelect
                 placeholder={'Wybierz'}
-                cacheOptions
                 defaultOptions
                 loadOptions={this.promiseOptions}
                 onChange={this.props.handleChange}/>
