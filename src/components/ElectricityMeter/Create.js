@@ -1,15 +1,12 @@
 import React, {Component} from 'react'
 import {Row, Col} from 'react-bootstrap'
-import SelectPostAddress from '../Address/SelectPostAddress'
 import {Form, Text} from 'informed'
-import SelectClient from '../Client/SelectClient'
-import PpeService from '../../api/PpeService'
 import {toast} from "react-toastify";
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import ElectricityMeterService from "../../api/ElectricityMeterService";
 
-export default class ElectricityMeterForm extends Component {
+export default class Create extends Component {
 
     constructor(props) {
         super(props);

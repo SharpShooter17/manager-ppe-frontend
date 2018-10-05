@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Row, Col} from 'react-bootstrap'
 import SelectPostAddress from '../Address/SelectPostAddress'
 import {Form, Text} from 'informed'
-import SelectClient from '../Client/SelectClient'
 import PpeService from '../../api/PpeService'
 import {toast} from "react-toastify";
 
@@ -12,8 +11,7 @@ export default class Create extends Component {
         super(props);
 
         this.state = {
-            address: '',
-            client: ''
+            address: ''
         };
 
         this.handleSubmit.bind(this);
@@ -26,20 +24,14 @@ export default class Create extends Component {
         });
     };
 
-    handleChangeClient = (newValue) => {
-        this.setState({
-            client: newValue.value
-        });
-    };
-
     handleSubmit = (data) => {
-        PpeService.create(data.ppe, data.name, data.street, this.state.address, this.state.client).then((response) => {
+        PpeService.create(data.ppe, data.name, data.street, this.state.address, this.props.clientId).then((response) => {
             toast.success("Dodano ppe");
             document.getElementById("createPpe-form").reset();
             this.setState({
                 address: '',
-                client: ''
             });
+            this.props.handlePpeAdded();
         }).catch((error) => {
             toast.error("Błąd: " + error.message);
         });
@@ -76,12 +68,6 @@ export default class Create extends Component {
                             <Col xs={8}>
                                 <SelectPostAddress name="postAddress" id="postAddress"
                                                    handleChange={this.handleChangeAddress}/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="client" className="control-label col-xs-4">Klient</label>
-                            <Col xs={8}>
-                                <SelectClient name="client" id="client" handleChange={this.handleChangeClient}/>
                             </Col>
                         </Row>
                         <Row className="form-group">

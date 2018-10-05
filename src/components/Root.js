@@ -11,10 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import ClientFinder from './Client/Finder'
 import {Grid, Row, Col} from 'react-bootstrap'
 import Client from "./Client/Client";
-import CreatePpe from "./Ppe/Create";
 import Ppe from './Ppe/Ppe'
 import PpeFinder from './Ppe/Finder'
 import 'react-datepicker/dist/react-datepicker.css';
+import ElectricityMeter from "./ElectricityMeter/ElectricityMeter";
 
 export class Root extends Component {
     render() {
@@ -34,9 +34,10 @@ export class Root extends Component {
                                 <Route path={'/client/find'} component={ClientFinder}/>
                                 <Route path={'/client/:code'} component={Client}/>
 
-                                <Route path={'/ppe/create'} component={CreatePpe}/>
                                 <Route path={'/ppe/find'} component={PpeFinder} />
                                 <Route path={'/ppe/:physicalId'} component={Ppe} />
+
+                                <Route path={'/electricityMeter/:number'} component={ElectricityMeter} />
                             </Switch>
                         </main>
                     </Col>

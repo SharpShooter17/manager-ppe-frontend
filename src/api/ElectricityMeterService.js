@@ -16,4 +16,8 @@ const byPpePhysicalId = function (_ppeId) {
     return axios.get('/byPpePhysicalId/' + _ppeId);
 };
 
-export default {create, byPpePhysicalId}
+const byNumber = function (_number){
+    return axios.get('/' + _number);
+};
+
+export default {create, byPpePhysicalId, byNumber}

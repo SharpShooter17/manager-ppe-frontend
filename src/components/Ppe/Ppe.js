@@ -4,7 +4,7 @@ import PpeService from '../../api/PpeService'
 import Address from '../Address/Address'
 import {Link} from 'react-router-dom'
 import ElectricityMeterService from '../../api/ElectricityMeterService'
-import ElectricityMeterForm from "./ElectricityMeterForm";
+import ElectricityMeterForm from "../ElectricityMeter/Create";
 
 export default class Ppe extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ export default class Ppe extends Component {
             loadedEm: false
         };
         this.updateEm.bind(this);
+        this.handleUpdateEmEvent.bind(this);
     }
 
     updateEm = () => {
@@ -40,8 +41,16 @@ export default class Ppe extends Component {
         });
     }
 
+    handleUpdateEmEvent = () => {
+        console.log("update em");
+        this.setState({
+            loadedEm: false
+        });
+        this.updateEm();
+    };
+
     render() {
-        if (this.state.loadedPpe) {
+        if (this.state.loadedPpe && this.state.loadedEm) {
             return (
                 <Row>
                     <Col md={4} sm={6}>
@@ -62,35 +71,35 @@ export default class Ppe extends Component {
                     </Col>
                     <Col md={8} sm={6}>
                         <Row>
-                            <h4>Liczniki</h4>
-                            <hr />
-                            <Table>
-                                <thead>
-                                    <tr>
-                                        <th>Numer</th>
-                                        <th>Data montażu</th>
-                                        <th>Data demontażu</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.electricityMeters.map((em, index) => {
-                                        return (
-                                          <tr>
-                                              <td>{em.number}</td>
-                                              <td>{em.assembly}</td>
-                                              <td>{em.deassembly}</td>
-                                          </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </Table>
-                        </Row>
-                        <Row>
                             <Col>
                                 <h4>Dodaj licznik</h4>
                                 <hr/>
-                                <ElectricityMeterForm handle={this.updateEm} ppeId={this.state.ppe.id}/>
+                                <ElectricityMeterForm handle={this.handleUpdateEmEvent} ppeId={this.state.ppe.id}/>
                             </Col>
+                        </Row>
+                        <Row>
+                            <h4>Liczniki</h4>
+                            <hr/>
+                            <Table>
+                                <thead>
+                                <tr>
+                                    <th>Numer</th>
+                                    <th>Data montażu</th>
+                                    <th>Data demontażu</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {this.state.electricityMeters.map((em, index) => {
+                                    return (
+                                        <tr>
+                                            <td><Link to={'/electricityMeter/' + em.number}>{em.number}</Link></td>
+                                            <td><Link to={'/electricityMeter/' + em.number}>{em.assembly}</Link></td>
+                                            <td><Link to={'/electricityMeter/' + em.number}>{em.deassembly}</Link></td>
+                                        </tr>
+                                    );
+                                })}
+                                </tbody>
+                            </Table>
                         </Row>
                     </Col>
                 </Row>

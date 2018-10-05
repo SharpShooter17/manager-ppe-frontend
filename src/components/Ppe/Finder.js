@@ -37,7 +37,7 @@ export default class Finder extends Component {
                         zipCode: ppe.address.postAddress.zipCode,
                         city: ppe.address.postAddress.city.city
                     }
-                })
+                });
                 return null;
             });
 

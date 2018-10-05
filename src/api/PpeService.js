@@ -22,4 +22,9 @@ const getByPhysicalId = function (_physicalId) {
     return axios.get('/' +_physicalId);
 };
 
-export default {create, getAll, getByPhysicalId}
+const byClientCode = function (_clientCode) {
+    return axios.get('/byClientCode/' + _clientCode);
+};
+
+
+export default {create, getAll, getByPhysicalId, byClientCode}
