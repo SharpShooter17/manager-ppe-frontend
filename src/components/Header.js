@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Navbar, Nav} from 'react-bootstrap'
 import ClientMenu from './Client/Menu'
 import PpeMenu from './Ppe/Menu'
+import TariffMenu from './Tariff/Menu'
 
 export class Header extends Component {
     render() {
@@ -16,6 +17,7 @@ export class Header extends Component {
                 <Nav>
                     <ClientMenu/>
                     <PpeMenu/>
+                    <TariffMenu/>
                 </Nav>
             </Navbar>
         );

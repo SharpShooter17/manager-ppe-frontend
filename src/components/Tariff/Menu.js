@@ -6,9 +6,8 @@ import React from "react";
 export default class Menu extends Component {
     render() {
         return (
-            <NavDropdown componentClass='span' title="Klient" id="basic-nav-dropdown">
-                <MenuItem><Link to={'/client/create'}>Dodaj</Link></MenuItem>
-                <MenuItem><Link to={'/client/find'}>Wyszukaj</Link></MenuItem>
+            <NavDropdown title="Taryfa" id="basic-nav-dropdown">
+                <MenuItem><Link to={'/tariff/create'}>Dodaj</Link></MenuItem>
             </NavDropdown>
         );
     }

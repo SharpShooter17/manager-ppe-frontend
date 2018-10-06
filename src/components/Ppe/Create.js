@@ -42,39 +42,42 @@ export default class Create extends Component {
             <Form id="createPpe-form" className="form-horizontal" onSubmit={data => this.handleSubmit(data)}>
                 {({formApi}) => (
                     <Row>
-                        <Row className="form-group">
-                            <label htmlFor="ppe" className="control-label col-xs-4">Numer PPE</label>
-                            <Col xs={8}>
-                                <Text id="ppe" name="ppe" field="ppe" type="text" required="required"
-                                      className="form-control"/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="name" className="control-label col-xs-4">Imię i nazwisko lub nazwa
-                                firmy</label>
-                            <Col xs={8}>
-                                <Text id="name" name="name" field="name" required="required" type="text"
-                                      className="form-control"/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="street" className="control-label col-xs-4">Ulica i numer</label>
-                            <Col xs={8}>
-                                <Text field="street" id="street" name="street" type="text" className="form-control"/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <label htmlFor="postAddress" className="control-label col-xs-4">Kod pocztowy</label>
-                            <Col xs={8}>
-                                <SelectPostAddress name="postAddress" id="postAddress"
-                                                   handleChange={this.handleChangeAddress}/>
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Col xsOffset={4} xs={8}>
-                                <button name="submit" type="submit" className="btn btn-primary">Stwórz ppe</button>
-                            </Col>
-                        </Row>
+                        <Col>
+                            <Row className="form-group">
+                                <label htmlFor="ppe" className="control-label col-xs-4">Numer PPE</label>
+                                <Col xs={8}>
+                                    <Text id="ppe" name="ppe" field="ppe" type="text" required="required"
+                                          className="form-control"/>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <label htmlFor="name" className="control-label col-xs-4">Imię i nazwisko lub nazwa
+                                    firmy</label>
+                                <Col xs={8}>
+                                    <Text id="name" name="name" field="name" required="required" type="text"
+                                          className="form-control"/>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <label htmlFor="street" className="control-label col-xs-4">Ulica i numer</label>
+                                <Col xs={8}>
+                                    <Text field="street" id="street" name="street" type="text"
+                                          className="form-control"/>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <label htmlFor="postAddress" className="control-label col-xs-4">Kod pocztowy</label>
+                                <Col xs={8}>
+                                    <SelectPostAddress name="postAddress" id="postAddress"
+                                                       handleChange={this.handleChangeAddress}/>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Col xsOffset={4} xs={8}>
+                                    <button name="submit" type="submit" className="btn btn-primary">Stwórz ppe</button>
+                                </Col>
+                            </Row>
+                        </Col>
                     </Row>
                 )}
             </Form>

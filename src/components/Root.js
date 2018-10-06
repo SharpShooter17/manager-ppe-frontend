@@ -15,6 +15,7 @@ import Ppe from './Ppe/Ppe'
 import PpeFinder from './Ppe/Finder'
 import 'react-datepicker/dist/react-datepicker.css';
 import ElectricityMeter from "./ElectricityMeter/ElectricityMeter";
+import TariffCreate from './Tariff/Create'
 
 export class Root extends Component {
     render() {
@@ -38,6 +39,8 @@ export class Root extends Component {
                                 <Route path={'/ppe/:physicalId'} component={Ppe} />
 
                                 <Route path={'/electricityMeter/:number'} component={ElectricityMeter} />
+
+                                <Route path={'/tariff/create'} component={TariffCreate} />
                             </Switch>
                         </main>
                     </Col>

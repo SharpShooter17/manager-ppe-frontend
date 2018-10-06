@@ -62,7 +62,7 @@ export default class ElectricityMeter extends Component {
                             <Col>
                                 <h4>Dodaj rozliczenie</h4>
                                 <hr/>
-                                <SettlementCreate/>
+                                <SettlementCreate electricityMeterNumber={this.props.match.params.number}/>
                             </Col>
                         </Row>
                         <Row>
