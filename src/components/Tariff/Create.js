@@ -56,8 +56,8 @@ export default class Create extends Component {
         };
 
         TariffService.create(tariff).then((response) => {
-            document.getElementById("createSettlement-form").reset();
-            toast.success("Dodano rozliczenie");
+            document.getElementById("createTariff-form").reset();
+            toast.success("Dodano taryfe");
         }).catch((error) => {
             toast.error("Błąd: " + error.message);
         });

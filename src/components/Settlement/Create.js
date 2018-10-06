@@ -59,6 +59,7 @@ export default class Create extends Component {
 
         SettlementService.create(settlement).then((response) => {
             document.getElementById("createSettlement-form").reset();
+            this.props.createEvent();
             toast.success("Dodano rozliczenie");
         }).catch((error) => {
             toast.error("Błąd: " + error.message);

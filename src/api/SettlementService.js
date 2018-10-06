@@ -7,4 +7,8 @@ const create = function (_settlement){
     return axios.post('/create', _settlement);
 };
 
-export default {create}
+const byElectricityMeterNumber = function(_number){
+    return axios.get('/byElectricityMeterNumber/' + _number);
+}
+
+export default {create, byElectricityMeterNumber}
