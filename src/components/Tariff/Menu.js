@@ -8,6 +8,7 @@ export default class Menu extends Component {
         return (
             <NavDropdown title="Taryfa" id="basic-nav-dropdown">
                 <MenuItem><Link to={'/tariff/create'}>Dodaj</Link></MenuItem>
+                <MenuItem><Link to={'/tariff/find'}>Wyszukaj</Link></MenuItem>
             </NavDropdown>
         );
     }

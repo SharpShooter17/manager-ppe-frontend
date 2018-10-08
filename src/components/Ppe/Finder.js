@@ -72,10 +72,10 @@ export default class Finder extends Component {
 
                                         <tr key={ppe.id}>
                                             <td><Link to={'/ppe/' + ppe.physicalId}>{ppe.physicalId}</Link></td>
-                                            <td><Link to={'/ppe/' + ppe.physicalId}>{ppe.client.name}</Link></td>
-                                            <td><Link to={'/ppe/' + ppe.physicalId}>{ppe.address.street}</Link></td>
-                                            <td><Link to={'/ppe/' + ppe.physicalId}>{ppe.address.zipCode}</Link></td>
-                                            <td><Link to={'/ppe/' + ppe.physicalId}>{ppe.address.city}</Link></td>
+                                            <td>{ppe.client.name}</td>
+                                            <td>{ppe.address.street}</td>
+                                            <td>{ppe.address.zipCode}</td>
+                                            <td>{ppe.address.city}</td>
                                         </tr>
                                     )
                                 })}

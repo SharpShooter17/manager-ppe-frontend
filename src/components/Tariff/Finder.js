@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SearchInput, {createFilter} from 'react-search-input'
-import ClientService from "../../api/ClientService";
+import TariffService from "../../api/TariffService";
 import {Grid, Row, Col, Table} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -11,7 +11,7 @@ export default class Finder extends Component {
         super(props);
         this.state = {
             searchTerm: '',
-            clients: [{}]
+            tariffs: [{}]
         };
         this.searchUpdated = this.searchUpdated.bind(this)
     }
@@ -21,9 +21,9 @@ export default class Finder extends Component {
     }
 
     componentDidMount() {
-        ClientService.getAll().then((response) => {
+        TariffService.getAll().then((response) => {
             this.setState({
-                clients: response.data
+                tariffs: response.data
             });
             console.log(response.data)
         });
@@ -34,21 +34,19 @@ export default class Finder extends Component {
             <Grid>
                 <Row>
                     <Col>
-                        <SearchInput placeholder="Wyszukaj klienta" className="search-input"
+                        <SearchInput placeholder="Wyszukaj taryfy" className="search-input"
                                      onChange={this.searchUpdated}/>
                         <Table striped bordered condensed hover>
                             <thead>
                             <tr>
-                                <th>Nazwa</th>
                                 <th>Unikalny kod</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.clients.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS)).map(client => {
+                            {this.state.tariffs.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS)).map(tariff => {
                                 return (
-                                    <tr key={client.id}>
-                                        <td><Link to={'/client/' + client.code}>{client.name}</Link></td>
-                                        <td>{client.code}</td>
+                                    <tr key={tariff.id}>
+                                        <td><Link to={'/tariff/' + tariff.code}>{tariff.code}</Link></td>
                                     </tr>
                                 )
                             })}

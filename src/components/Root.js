@@ -16,6 +16,8 @@ import PpeFinder from './Ppe/Finder'
 import 'react-datepicker/dist/react-datepicker.css';
 import ElectricityMeter from "./ElectricityMeter/ElectricityMeter";
 import TariffCreate from './Tariff/Create'
+import TariffFinder from './Tariff/Finder'
+import Tariff from "./Tariff/Tariff";
 
 export class Root extends Component {
     render() {
@@ -41,6 +43,8 @@ export class Root extends Component {
                                 <Route path={'/electricityMeter/:number'} component={ElectricityMeter} />
 
                                 <Route path={'/tariff/create'} component={TariffCreate} />
+                                <Route path={'/tariff/find'} component={TariffFinder} />
+                                <Route path={'/tariff/:code'} component={Tariff} />
                             </Switch>
                         </main>
                     </Col>

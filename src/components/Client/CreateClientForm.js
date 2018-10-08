@@ -11,8 +11,9 @@ export default class CreateClientForm extends Component {
     }
 
     handleSubmit(data) {
-        ClientService.createClient(data.code, data.name)
+        ClientService.createClient(data.name)
             .then((response) => {
+                document.getElementById("createClientForm").reset();
                 toast.success("Dodano klienta");
             })
             .catch((error) => {
@@ -29,13 +30,6 @@ export default class CreateClientForm extends Component {
                             <label htmlFor="name" className="control-label col-xs-4">Nazwa</label>
                             <div className="col-xs-8">
                                 <Text id="name" name="name" field="name" type="text" className="form-control"
-                                      required="required"/>
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="code" className="control-label col-xs-4">Unikalny kod</label>
-                            <div className="col-xs-8">
-                                <Text id="code" name="code" field="code" type="text" className="form-control"
                                       required="required"/>
                             </div>
                         </div>

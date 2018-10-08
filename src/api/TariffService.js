@@ -23,4 +23,8 @@ const byNameLike = function (_name) {
     return axios.get('/getTariff/' + _name);
 };
 
-export default {create, byNameLike}
+const getByCode = function (_code) {
+    return axios.get('/' + _code);
+};
+
+export default {create, byNameLike, getAll, getByCode}

@@ -6,6 +6,7 @@ import Address from "../Address/Address";
 import {Link} from "react-router-dom"
 import SettlementCreate from '../Settlement/Create'
 import SettlementService from "../../api/SettlementService";
+import Estimate from "./Estimate";
 
 export default class ElectricityMeter extends Component {
 
@@ -52,7 +53,7 @@ export default class ElectricityMeter extends Component {
 
     handleCreateSettlementEvent = () => {
         this.setState({
-            loadedSettlements:false
+            loadedSettlements: false
         });
         this.loadSettlements();
     };
@@ -63,32 +64,38 @@ export default class ElectricityMeter extends Component {
                 <Row>
                     <Col md={4} sm={6}>
                         <Row>
-                            <Col>Numer licznika: {this.state.em.number}</Col>
+                            <Col>
+                                <Row>
+                                    <Col>Numer licznika: {this.state.em.number}</Col>
+                                </Row>
+                                <Row>
+                                    <Col>Numer PPE: <Link
+                                        to={'/ppe/' + this.state.em.ppe.physicalId}>{this.state.em.ppe.physicalId}</Link></Col>
+                                </Row>
+                                <Row>
+                                    <Col>Data montażu: {this.state.em.assembly}</Col>
+                                </Row>
+                                <Row>
+                                    <Col>Data demontażu: {this.state.em.deassembly}</Col>
+                                </Row>
+                                <Row>
+                                    <Col>Klient: <Link
+                                        to={'/client/' + this.state.em.ppe.client.code}>{this.state.em.ppe.client.name}</Link></Col>
+                                </Row>
+                                <Row>
+                                    <Col>Adres: <Address address={this.state.em.ppe.address}/></Col>
+                                </Row>
+                            </Col>
                         </Row>
-                        <Row>
-                            <Col>Numer PPE: <Link
-                                to={'/ppe/' + this.state.em.ppe.physicalId}>{this.state.em.ppe.physicalId}</Link></Col>
-                        </Row>
-                        <Row>
-                            <Col>Data montażu: {this.state.em.assembly}</Col>
-                        </Row>
-                        <Row>
-                            <Col>Data demontażu: {this.state.em.deassembly}</Col>
-                        </Row>
-                        <Row>
-                            <Col>Klient: <Link
-                                to={'/client/' + this.state.em.ppe.client.code}>{this.state.em.ppe.client.name}</Link></Col>
-                        </Row>
-                        <Row>
-                            <Col>Adres: <Address address={this.state.em.ppe.address}/></Col>
-                        </Row>
+                        <Estimate em={this.props.match.params.number}/>
                     </Col>
                     <Col md={8} sm={6}>
                         <Row>
                             <Col>
                                 <h4>Dodaj rozliczenie</h4>
                                 <hr/>
-                                <SettlementCreate createEvent={this.handleCreateSettlementEvent} electricityMeterNumber={this.props.match.params.number}/>
+                                <SettlementCreate createEvent={this.handleCreateSettlementEvent}
+                                                  electricityMeterNumber={this.props.match.params.number}/>
                             </Col>
                         </Row>
                     </Col>
@@ -128,8 +135,8 @@ export default class ElectricityMeter extends Component {
                                             <td>{s.provision}</td>
                                             <td>{s.tradeFee}</td>
                                             <td>{s.reactiveEnergy}</td>
-                                            {s.volumeOfEnergyConsumptions.map((v,i) => {
-                                                return(
+                                            {s.volumeOfEnergyConsumptions.map((v, i) => {
+                                                return (
                                                     <td>{v.volume}</td>
                                                 )
                                             })}

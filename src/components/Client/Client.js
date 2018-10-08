@@ -39,6 +39,7 @@ export default class Client extends Component {
         });
 
         this.updatePpe();
+        this.handlePpeAdded.bind(this)
     }
 
     handlePpeAdded = () => {

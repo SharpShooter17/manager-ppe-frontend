@@ -52,6 +52,7 @@ export default class Create extends Component {
             electricityMeterNumber: this.props.electricityMeterNumber,
             provision: data.provision,
             tradeFee: data.tradeFee,
+            activeEnergy: data.activeEnergy,
             reactiveEnergy: data.reactiveEnergy,
             initialSettlement: data.initialSettlement,
             consumptions: volumes
@@ -156,6 +157,15 @@ export default class Create extends Component {
                                 <Col xs={8}>
                                     <Text id="tradeFee" name="tradeFee" field="tradeFee" type="number" step="0.01"
                                           required="required"
+                                          className="form-control"/>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <label htmlFor="activeEnergy" className="control-label col-xs-4">Energia
+                                    czynna</label>
+                                <Col xs={8}>
+                                    <Text id="activeEnergy" name="activeEnergy" field="activeEnergy" type="number"
+                                          step="0.01" required="required"
                                           className="form-control"/>
                                 </Col>
                             </Row>

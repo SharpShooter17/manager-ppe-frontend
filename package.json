@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "file-saver": "^2.0.0-rc.3",
     "informed": "^1.10.5",
     "js-cookie": "^2.2.0",
+    "js-file-download": "^0.4.4",
     "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
